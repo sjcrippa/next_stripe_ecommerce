@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <header className="mb-8 border-b">
-      <nav className="flex items-center justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl">
+      <nav className="flex items-center justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <Link href='/'>
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Next
             <span className="text-primary">Commerce</span>
