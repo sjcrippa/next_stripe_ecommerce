@@ -6,7 +6,7 @@ import { client } from "@/app/lib/sanity"
 import { simplifiedProduct } from "@/app/types/types"
 
 async function getData() {
-  const query = `*[_type == "product"][0...4] | order(_createdAt desc) {
+  const query = `*[_type == "product"] | order(_createdAt desc) {
     _id,
       price,
     name,

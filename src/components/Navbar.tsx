@@ -10,7 +10,7 @@ const links = [
   { name: 'Home', href: '/' },
   { name: 'For Him', href: '/Him' },
   { name: 'For Her', href: '/Her' },
-  { name: 'Fragrances', href: '/Fragrances' }
+  { name: 'Jewelries', href: '/jewelries' }
 ]
 
 export default function Navbar() {
