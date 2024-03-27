@@ -1,32 +1,31 @@
 import Link from "next/link"
-import Image from "next/image"
+import { client } from "../lib/sanity"
+import { simplifiedProduct } from "../types/types"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
-import { client } from "@/app/lib/sanity"
-import { simplifiedProduct } from "@/app/types/types"
-
-async function getData() {
-  const query = `*[_type == "product"][0...4] | order(_createdAt desc) {
+async function getData(category: string) {
+  const query = `*[_type == 'product' && category -> name == '${category}']{
     _id,
+      'imageUrl': images[0].asset -> url,
       price,
-    name,
-      "slug": slug.current,
-      "categoryName": category->name,
-      "imageUrl": images[0].asset->url
+      name,
+      'slug': slug.current,
+      'categoryName': category -> name  
   }`
   const data = await client.fetch(query)
   return data
 }
 
-export default async function Newest() {
-  const data: simplifiedProduct[] = await getData()
+export default async function CategoryPage({ params }: { params: { category: string } }) {
+  const data: simplifiedProduct[] = await getData(params.category)
 
   return (
     <section>
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center">
-          <h3 className="text-2xl font-bold tracking-tight">Our newest products</h3>
-          <Link href={'/Fragrances'} className="text-primary flex items-center gap-x-1">
+          <h3 className="text-2xl font-bold tracking-tight">For {params.category}</h3>
+          <Link href={'/all'} className="text-primary flex items-center gap-x-1">
             See all {' '}
             <span>
               <ArrowRight />

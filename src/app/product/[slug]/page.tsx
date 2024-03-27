@@ -2,7 +2,7 @@ import { client } from "@/app/lib/sanity"
 import { fullProduct } from "@/app/types/types"
 import ImageGallery from "@/components/image-gallery"
 import { Button } from "@/components/ui/button"
-import { Star } from "lucide-react"
+import { Star, Truck } from "lucide-react"
 
 async function getData(slug: string) {
   const query = `*[_type == 'product' && slug.current == "${slug}"][0] {
@@ -26,7 +26,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
       <div className="grid gap-8 md:grid-cols-2">
         <ImageGallery images={data.images} />
 
-        <div className="md:py-8">
+        <div>
           <div className="mb-2 mb:mb-3">
             <span className="mb-1 inline-block text-gray-300">
               {data.categoryName}
@@ -36,12 +36,45 @@ export default async function ProductPage({ params }: { params: { slug: string }
             </h3>
           </div>
 
-          <div className="mb-6 flex items-center gap-3 md:mb-10">
+          <div className="mb-6 flex items-center gap-3 md:mb-8">
             <Button className="rounded-full gap-x-3">
               <span>5.0</span>
-              <Star className="h-6 w-6"/>
+              <Star className="h-6 w-6" />
             </Button>
+
+            <span className="text-sm text-gray-500 transition duration-100">
+              56 ratings
+            </span>
           </div>
+
+          <div className="mb-4">
+            <div className="flex items-center gap-2">
+              <span className="text-xl md:text-2xl font-bold">
+                ${data.price}
+              </span>
+              <span className="text-sm text-primary line-through">
+                ${data.price + 30}
+              </span>
+            </div>
+
+            <span className="text-sm text-gray-500">
+              Shipping compañy
+            </span>
+          </div>
+
+          <div className="mb-6 flex items-center gap-2 text-gray-500">
+            <Truck className="w-6 h-6" />
+            <span>2 - 4 Day shipping</span>
+          </div>
+
+          <div className="flex gap-3">
+            <Button>Add to Cart</Button>
+            <Button variant={"secondary"}>Checkout now</Button>
+          </div>
+
+          <p className="mt-12 text-base text-gray-500 tracking-wide">
+            {data.description}
+          </p>
         </div>
       </div>
     </section>

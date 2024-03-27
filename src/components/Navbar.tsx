@@ -8,9 +8,9 @@ import { Button } from "./ui/button";
 
 const links = [
   { name: 'Home', href: '/' },
-  { name: 'For Him', href: '/him' },
-  { name: 'For Her', href: '/her' },
-  { name: 'Fragrances', href: '/fragrances' }
+  { name: 'For Him', href: '/Him' },
+  { name: 'For Her', href: '/Her' },
+  { name: 'Fragrances', href: '/Fragrances' }
 ]
 
 export default function Navbar() {
