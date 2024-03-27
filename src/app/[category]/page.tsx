@@ -5,7 +5,7 @@ import { client } from "../lib/sanity"
 import { simplifiedProduct } from "../types/types"
 
 async function getData(category: string) {
-  const query = `*[_type == 'product' && category -> name == "${category}"][0...3]{
+  const query = `*[_type == 'product' && category -> name == "${category}"][0...999]{
     _id,
       'imageUrl': images[0].asset -> url,
       price,
