@@ -37,7 +37,11 @@ export default function ImageGallery({ images }: Props) {
 
       <div className="relative overflow-hidden rounded-lg lg:col-span-4">
         <Image src={urlFor(bigImage).url()} alt="" width={500} height={500} className="h-full w-full object-cover object-center" />
+        <span className="absolute left-0 top-0 rounded-br-lg bg-primary px-3 py-1.5 uppercase tracking-wide text-white">
+          sale
+        </span>
       </div>
+
     </section>
   )
 }
