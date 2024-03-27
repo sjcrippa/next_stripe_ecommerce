@@ -1,8 +1,8 @@
 import Link from "next/link"
+import Image from "next/image"
+
 import { client } from "../lib/sanity"
 import { simplifiedProduct } from "../types/types"
-import { ArrowRight } from "lucide-react"
-import Image from "next/image"
 
 async function getData(category: string) {
   const query = `*[_type == 'product' && category -> name == "${category}"]{
@@ -22,7 +22,7 @@ export default async function CategoryPage({ params }: { params: { category: str
 
   return (
     <section>
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center">
           <h3 className="text-2xl font-bold tracking-tight">For {params.category}</h3>
 
