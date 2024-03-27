@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
 async function getData(category: string) {
-  const query = `*[_type == 'product' && category -> name == '${category}']{
+  const query = `*[_type == 'product' && category -> name == "${category}"]{
     _id,
       'imageUrl': images[0].asset -> url,
       price,
@@ -25,12 +25,6 @@ export default async function CategoryPage({ params }: { params: { category: str
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center">
           <h3 className="text-2xl font-bold tracking-tight">For {params.category}</h3>
-          <Link href={'/all'} className="text-primary flex items-center gap-x-1">
-            See all {' '}
-            <span>
-              <ArrowRight />
-            </span>
-          </Link>
 
         </div>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
