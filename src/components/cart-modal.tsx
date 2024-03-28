@@ -1,15 +1,17 @@
 'use client'
 
+import { urlFor } from "@/app/lib/sanity"
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
+import Image from "next/image"
 import { useShoppingCart } from "use-shopping-cart"
 
 export default function CartModal() {
-  const { cartCount, shouldDisplayCart, handleCartClick } = useShoppingCart()
+  const { cartCount, shouldDisplayCart, handleCartClick, cartDetails } = useShoppingCart()
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
@@ -23,7 +25,27 @@ export default function CartModal() {
               {
                 cartCount === 0
                   ? '0 items'
-                  : 'X items'
+                  : (
+                    <>
+                      {
+                        Object.values(cartDetails ?? {}).map((entry) => (
+                          <li key={entry.id} className="flex py-6 flex-col">
+                            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-500">
+                              <Image
+                                src={entry.image as string}
+                                alt="Item image"
+                                width={100}
+                                height={100}
+                              />
+                            </div>
+                            <h4 className="text-white">{entry.name}</h4>
+                            <p>{entry.price}</p>
+                            <p>{entry.description}</p>
+                          </li>
+                        ))
+                      }
+                    </>
+                  )
               }
             </ul>
           </div>

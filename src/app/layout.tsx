@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import Navbar from "@/components/navbar";
 import CartProvider from "./providers";
+import CartModal from "@/components/cart-modal";
 
 import "./globals.css";
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={`${inter.className} dark`}>
         <CartProvider>
           <Navbar />
+          <CartModal />
           {children}
         </CartProvider>
       </body>
