@@ -4,23 +4,26 @@ import Image from "next/image"
 import { useState } from "react"
 
 import { urlFor } from "@/app/lib/sanity"
+import { ProductImage } from "@/app/types/types"
 
 interface Props {
-  images: any
+  images: ProductImage[]
 }
 
 export default function ImageGallery({ images }: Props) {
-  const [bigImage, setBigImage] = useState(images[0])
+  console.log(typeof images);
+  const [bigImage, setBigImage] = useState<ProductImage>(images[0])
 
-  const handleImage = (image: any) => {
+  const handleImage = (image: ProductImage) => {
     setBigImage(image)
   }
+
 
   return (
     <section className="grid gap-4 lg:grid-cols-5">
       <div className="order-last flex gap-4 lg:order-none lg:flex-col">
         {
-          images.map((image: any, index: number) => (
+          images.map((image: ProductImage, index: number) => (
             <div key={index} className="overflow-hidden rounded-lg">
               <Image
                 onClick={() => handleImage(image)}

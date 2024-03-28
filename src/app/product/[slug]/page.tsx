@@ -21,7 +21,7 @@ async function getData(slug: string) {
 
 export default async function ProductPage({ params }: { params: { slug: string } }) {
   const data: fullProduct = await getData(params.slug)
-
+  
   return (
     <section className="mb-8 mx-auto max-w-screen-xl px-4 md:px-8">
       <div className="grid gap-8 md:grid-cols-2">
@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
               name={data.name}
               description={data.description}
               price={data.price}
-              image={data.images}
+              image={data.images[0]}
               currency="USD"
             />
             <Button variant={"secondary"}>Checkout now</Button>

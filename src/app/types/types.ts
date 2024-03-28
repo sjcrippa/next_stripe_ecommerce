@@ -7,9 +7,18 @@ export interface simplifiedProduct {
   name: string;
 }
 
+export interface ProductImage {
+  _type: string;
+  _key: string;
+  asset: {
+    _ref: string;
+    _type: string;
+  }
+}
+
 export interface fullProduct {
   _id: string;
-  images: any;
+  images: ProductImage[];
   price: number;
   slug: string;
   categoryName: string;

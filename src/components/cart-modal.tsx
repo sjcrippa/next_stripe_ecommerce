@@ -8,10 +8,15 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet"
 import Image from "next/image"
+import { useEffect } from "react"
 import { useShoppingCart } from "use-shopping-cart"
 
 export default function CartModal() {
   const { cartCount, shouldDisplayCart, handleCartClick, cartDetails } = useShoppingCart()
+
+  useEffect(() => {
+    console.log('useEffect dentro de cart-modal', cartDetails);
+  }, [cartDetails])
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
@@ -24,7 +29,7 @@ export default function CartModal() {
             <ul className="divide-y divide-red-500">
               {
                 cartCount === 0
-                  ? '0 items'
+                  ? "You don't have any items added!"
                   : (
                     <>
                       {
@@ -32,7 +37,7 @@ export default function CartModal() {
                           <li key={entry.id} className="flex py-6 flex-col">
                             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-500">
                               <Image
-                                src={entry.image as string}
+                                src={entry.image}
                                 alt="Item image"
                                 width={100}
                                 height={100}
