@@ -1,9 +1,10 @@
+import { Star, Truck } from "lucide-react"
+
 import { client } from "@/app/lib/sanity"
 import { FullProduct } from "@/app/types/types"
+import { Button } from "@/components/ui/button"
 import AddToCartClient from "@/components/add-to-cart-client"
 import ImageGallery from "@/components/image-gallery"
-import { Button } from "@/components/ui/button"
-import { Star, Truck } from "lucide-react"
 
 async function getData(slug: string) {
   const query = `*[_type == 'product' && slug.current == "${slug}"][0] {
@@ -70,6 +71,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
           <div className="flex gap-3">
             <AddToCartClient
+              id={data._id}
               name={data.name}
               description={data.description}
               price={data.price}

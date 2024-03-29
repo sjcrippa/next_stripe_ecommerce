@@ -25,3 +25,12 @@ export interface FullProduct {
   name: string;
   description: string
 }
+
+export interface CartItems {
+  id: string,
+  name: string,
+  description: string,
+  price: number,
+  currency: string,
+  image: ProductImage
+}
