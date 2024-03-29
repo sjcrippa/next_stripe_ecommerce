@@ -45,11 +45,11 @@ export default async function Newest() {
                 <div className="mt-4 flex justify-between items-center">
                   <div>
                     <h3 className="text-lg text-gray-200">
-                      <Link href={`/product/${product.slug}`}>
+                      <Link className="capitalize" href={`/product/${product.slug}`}>
                         {product.name}
                       </Link>
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-400 capitalize">
                       For {product.categoryName}
                     </p>
                   </div>

@@ -33,4 +33,5 @@ export interface CartItems {
   price: number,
   currency: string,
   image: ProductImage
+  slug: string,
 }

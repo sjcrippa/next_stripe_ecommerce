@@ -37,12 +37,12 @@ export default async function CategoryPage({ params }: { params: { category: str
 
                 <div className="mt-4 flex justify-between items-center">
                   <div>
-                    <h3 className="text-lg text-gray-200">
+                    <h3 className="text-lg text-gray-200 capitalize">
                       <Link href={`/product/${product.slug}`}>
                         {product.name}
                       </Link>
                     </h3>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-400 capitalize">
                       For {product.categoryName}
                     </p>
                   </div>

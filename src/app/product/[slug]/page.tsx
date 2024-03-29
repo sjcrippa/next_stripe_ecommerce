@@ -33,7 +33,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
             <span className="mb-1 inline-block text-gray-300">
               {data.categoryName}
             </span>
-            <h3 className="text-2xl font-bold text-gray-200 lg:text-3xl">
+            <h3 className="text-2xl font-bold text-gray-200 lg:text-3xl capitalize">
               {data.name}
             </h3>
           </div>
@@ -77,6 +77,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
               price={data.price}
               image={data.images[0]}
               currency="USD"
+              slug={data.slug}
             />
             <Button variant={"secondary"}>Checkout now</Button>
           </div>
