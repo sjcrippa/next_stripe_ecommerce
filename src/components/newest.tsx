@@ -3,7 +3,7 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 
 import { client } from "@/app/lib/sanity"
-import { simplifiedProduct } from "@/app/types/types"
+import { SimplifiedProduct } from "@/app/types/types"
 
 async function getData() {
   const query = `*[_type == "product"] | order(_createdAt desc) {
@@ -19,7 +19,7 @@ async function getData() {
 }
 
 export default async function Newest() {
-  const data: simplifiedProduct[] = await getData()
+  const data: SimplifiedProduct[] = await getData()
 
   return (
     <section>

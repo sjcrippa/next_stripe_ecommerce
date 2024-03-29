@@ -1,5 +1,5 @@
 import { client } from "@/app/lib/sanity"
-import { fullProduct } from "@/app/types/types"
+import { FullProduct } from "@/app/types/types"
 import AddToCartClient from "@/components/add-to-cart-client"
 import ImageGallery from "@/components/image-gallery"
 import { Button } from "@/components/ui/button"
@@ -20,7 +20,7 @@ async function getData(slug: string) {
 }
 
 export default async function ProductPage({ params }: { params: { slug: string } }) {
-  const data: fullProduct = await getData(params.slug)
+  const data: FullProduct = await getData(params.slug)
   
   return (
     <section className="mb-8 mx-auto max-w-screen-xl px-4 md:px-8">

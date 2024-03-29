@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 import { client } from "../lib/sanity"
-import { simplifiedProduct } from "../types/types"
+import { SimplifiedProduct } from "../types/types"
 
 async function getData(category: string) {
   const query = `*[_type == 'product' && category -> name == "${category}"][0...999]{
@@ -18,7 +18,7 @@ async function getData(category: string) {
 }
 
 export default async function CategoryPage({ params }: { params: { category: string } }) {
-  const data: simplifiedProduct[] = await getData(params.category)
+  const data: SimplifiedProduct[] = await getData(params.category)
 
   return (
     <section>

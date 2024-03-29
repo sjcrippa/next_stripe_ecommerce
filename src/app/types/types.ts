@@ -1,4 +1,4 @@
-export interface simplifiedProduct {
+export interface SimplifiedProduct {
   _id: string;
   imageUrl: string;
   price: number;
@@ -16,7 +16,7 @@ export interface ProductImage {
   }
 }
 
-export interface fullProduct {
+export interface FullProduct {
   _id: string;
   images: ProductImage[];
   price: number;
