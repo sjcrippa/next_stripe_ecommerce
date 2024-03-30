@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import Navbar from "@/components/navbar";
-import CartProvider from "./providers";
 import CartModal from "@/components/cart-modal";
+import CartProvider from "./providers";
 
 import "./globals.css";
 
