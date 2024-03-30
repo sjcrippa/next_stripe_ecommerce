@@ -66,7 +66,7 @@ export default function CartModal() {
                                   <button
                                     onClick={() => removeItem(item.id)}
                                     type="button"
-                                    className="font-medium text-primary hover:text-primary/80"
+                                    className="mt-3 md:mt-0 font-medium text-primary hover:text-primary/80"
                                   >
                                     <Trash2 className="w-6 h-6" />
                                   </button>
@@ -90,7 +90,7 @@ export default function CartModal() {
             <p className="mt-1 text-sm text-gray-300">
               Shipping and taxes are calculated at checkout.
             </p>
-            <div className="mt-2 flex justify-between items-center">
+            <div className="hidden mt-2 md:flex justify-between items-center">
               <p>Clear all:</p>
               <Button
                 onClick={() => clearCart()}
