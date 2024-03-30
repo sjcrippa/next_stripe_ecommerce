@@ -24,6 +24,7 @@ export interface FullProduct {
   categoryName: string;
   name: string;
   description: string
+  price_id: string;
 }
 
 export interface CartItems {
@@ -34,4 +35,5 @@ export interface CartItems {
   currency: string,
   image: ProductImage
   slug: string,
+  price_id: string;
 }

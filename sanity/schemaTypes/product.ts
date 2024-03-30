@@ -33,6 +33,11 @@ export const productType = defineType({
       title: 'Price'
     }),
     defineField({
+      name: 'price_id',
+      type: 'string',
+      title: 'Stripe price ID'
+    }),
+    defineField({
       name: 'category',
       type: 'reference',
       title: 'Category',

@@ -21,8 +21,21 @@ export default function CartModal() {
     cartDetails,
     removeItem,
     totalPrice,
-    clearCart
+    clearCart,
+    redirectToCheckout
   } = useShoppingCart()
+
+  async function handleCheckout(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault()
+    try {
+      const result = await redirectToCheckout()
+      if (result?.error) {
+        console.log('error result ->');
+      }
+    } catch (error) {
+      console.log('redirect error ->', error)
+    }
+  }
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
@@ -99,7 +112,7 @@ export default function CartModal() {
               </Button>
             </div>
             <div className="mt-6">
-              <Button className="w-full">Checkout</Button>
+              <Button onClick={handleCheckout} className="w-full hover:bg-primary/80">Checkout</Button>
             </div>
             <div className="mt-6 flex justify-center text-center text-sm text-gray-300">
               <p>Or {' '}

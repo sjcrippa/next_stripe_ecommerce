@@ -5,6 +5,7 @@ import { FullProduct } from "@/app/types/types"
 import { Button } from "@/components/ui/button"
 import AddToCartClient from "@/components/add-to-cart-client"
 import ImageGallery from "@/components/image-gallery"
+import Checkout from "@/components/checkout"
 
 async function getData(slug: string) {
   const query = `*[_type == 'product' && slug.current == "${slug}"][0] {
@@ -14,7 +15,8 @@ async function getData(slug: string) {
       name,
       description,
       'slug': slug.current,
-      'categoryName': category -> name
+      'categoryName': category -> name,
+      price_id
   }`
   const data = await client.fetch(query)
   return data
@@ -22,7 +24,7 @@ async function getData(slug: string) {
 
 export default async function ProductPage({ params }: { params: { slug: string } }) {
   const data: FullProduct = await getData(params.slug)
-  
+
   return (
     <section className="mb-8 mx-auto max-w-screen-xl px-4 md:px-8">
       <div className="grid gap-8 md:grid-cols-2">
@@ -78,8 +80,18 @@ export default async function ProductPage({ params }: { params: { slug: string }
               image={data.images[0]}
               currency="USD"
               slug={data.slug}
+              price_id={data.price_id}
             />
-            <Button variant={"secondary"}>Checkout now</Button>
+            <Checkout
+              id={data._id}
+              name={data.name}
+              description={data.description}
+              price={data.price}
+              image={data.images[0]}
+              currency="USD"
+              slug={data.slug}
+              price_id={data.price_id}
+            />
           </div>
 
           <p className="mt-12 text-base text-gray-500 tracking-wide">

@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingBag } from "lucide-react";
+import { useShoppingCart } from "use-shopping-cart";
 
 import { Button } from "./ui/button";
-import { useShoppingCart } from "use-shopping-cart";
 
 const links = [
   { name: 'Home', href: '/' },

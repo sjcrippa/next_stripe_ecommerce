@@ -6,7 +6,7 @@ import { Button } from './ui/button'
 import { urlFor } from '@/app/lib/sanity'
 import { CartItems } from '@/app/types/types'
 
-export default function AddToCartClient({ id, name, description, price, currency, image, slug }: CartItems) {
+export default function AddToCartClient({ id, name, description, price, currency, image, slug, price_id }: CartItems) {
   const { addItem, handleCartClick } = useShoppingCart()
 
   const item = {
@@ -17,7 +17,7 @@ export default function AddToCartClient({ id, name, description, price, currency
     image: urlFor(image).url(),
     currency,
     slug,
-    sku: 'product sku',
+    price_id
   }
 
   return (
