@@ -21,7 +21,7 @@ export default function Checkout({ id, name, description, price, currency, image
     image: urlFor(image).url(),
     currency,
     slug,
-    price_id
+    price_id,
   }
 
   return (

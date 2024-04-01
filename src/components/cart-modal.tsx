@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sheet"
 
 export default function CartModal() {
+
   const {
     cartCount,
     shouldDisplayCart,
@@ -25,17 +26,17 @@ export default function CartModal() {
     redirectToCheckout
   } = useShoppingCart()
 
-  async function handleCheckout(event: any) {
-    event.preventDefault()
+  async function handleCheckout(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+
     try {
-      const result = await redirectToCheckout()
+      const result = await redirectToCheckout();
       if (result?.error) {
-        console.log('error result ->');
+        console.log('error result ->', result.error);
       }
     } catch (error) {
-      console.log('redirect error ->', error)
+      console.log('redirect error ->', error);
     }
-    console.log(redirectToCheckout());
   }
 
   return (
