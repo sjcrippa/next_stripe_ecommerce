@@ -12,8 +12,10 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
+import { useState } from "react"
 
 export default function CartModal() {
+  const [status, setStatus] = useState('idle')
 
   const {
     cartCount,
@@ -32,10 +34,12 @@ export default function CartModal() {
     try {
       const result = await redirectToCheckout();
       if (result?.error) {
-        console.log('error result ->', result.error);
+        console.log('Stripe redirect error:', result.error);
+        setStatus('redirect-error')
       }
     } catch (error) {
-      console.log('redirect error ->', error);
+      console.log('Checkout error:', error);
+      setStatus('redirect-error')
     }
   }
 
@@ -116,6 +120,9 @@ export default function CartModal() {
             <div className="mt-6">
               <Button onClick={handleCheckout} className="w-full hover:bg-primary/80">Checkout</Button>
             </div>
+            {status === 'redirect-error' && (
+              <p className="text-red-500 font-bold">Unable to redirect to Stripe checkout page.</p>
+            )}
             <div className="mt-6 flex justify-center text-center text-sm text-gray-300">
               <p>Or {' '}
                 <button

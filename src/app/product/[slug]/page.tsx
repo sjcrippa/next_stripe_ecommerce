@@ -1,29 +1,14 @@
 import { Star, Truck } from "lucide-react"
 
-import { client } from "@/app/lib/sanity"
-import { FullProduct } from "@/app/types/types"
 import { Button } from "@/components/ui/button"
+import { FullProduct } from "@/app/types/types"
+import { getProductsData } from "@/hooks/data-fetching"
 import AddToCartClient from "@/components/add-to-cart-client"
 import ImageGallery from "@/components/image-gallery"
 import Checkout from "@/components/checkout"
 
-async function getData(slug: string) {
-  const query = `*[_type == 'product' && slug.current == "${slug}"][0] {
-    _id,
-      images,
-      price,
-      name,
-      description,
-      'slug': slug.current,
-      'categoryName': category -> name,
-      price_id
-  }`
-  const data = await client.fetch(query)
-  return data
-}
-
 export default async function ProductPage({ params }: { params: { slug: string } }) {
-  const data: FullProduct = await getData(params.slug)
+  const data: FullProduct = await getProductsData(params.slug)
 
   return (
     <section className="mb-8 mx-auto max-w-screen-xl px-4 md:px-8">
